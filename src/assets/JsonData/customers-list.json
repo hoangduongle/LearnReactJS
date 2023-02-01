@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Trần Văn Chung",
+    "phone": "0945709834",
+    "address": "Quận 7, Hồ Chí Minh",
+    "email": "ChungTV@gmail.com",
+    "status": "false"
+  },
+  {
+    "id": 2,
+    "name": "Nguyễn Thành An",
+    "phone": "0945709834",
+    "address": "Quận 12, Hồ Chí Minh",
+    "email": "AnNT@gmail.com",
+    "status": "true"
+  }
+]

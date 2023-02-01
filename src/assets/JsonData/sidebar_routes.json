@@ -1,0 +1,13 @@
+[
+    {
+        "display_name": "Danh sách nhân viên",
+        "route": "/listStaffs",
+        "icon": "bx bxs-user-rectangle"
+    },
+    {
+        "display_name": "Danh sách khách hàng",
+        "route": "/listCustomers",
+        "icon": "bx bxs-buildings"
+    }
+    
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Nguyễn Văn A",
+    "role": "Owner",
+    "status": "true",
+    "phone": "0902325984"
+  },
+  {
+    "id": 2,
+    "name": "Nguyễn Văn B",
+    "role": "Admin",
+    "status": "true",
+    "phone": "0902325984"
+  },
+  {
+    "id": 3,
+    "name": "Nguyễn Thị C",
+    "role": "Staff",
+    "status": "false",
+    "phone": "0902325984"
+  },
+  {
+    "id": 4,
+    "name": "Trần Văn D",
+    "role": "Mananger",
+    "status": "true",
+    "phone": "0902325984"
+  },
+  {
+    "id": 5,
+    "name": "Trần Văn Năm",
+    "role": "Mananger",
+    "status": "false",
+    "phone": "0902325984"
+  },
+  {
+    "id": 6,
+    "name": "Trần Văn Sáu",
+    "role": "Mananger",
+    "status": "true",
+    "phone": "0902325984"
+  }
+]
