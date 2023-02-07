@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import TableCustomer from "../components/table/TableCustomer";
-
-import customerList from "../assets/JsonData/customers-list.json";
+import customerApi from "../api/customerApi";
 
 const customerTableHead = [
   "Mã khách hàng",
@@ -27,10 +26,24 @@ const renderBody = (item, index) => (
 );
 
 const Customers = () => {
+  const [dataCustomer, setDataCustomer] = useState([]);
+
+  useEffect(() => {
+    const fetchStaffList = async () => {
+      try {
+        const respone = await customerApi.getAll();
+        setDataCustomer(respone);
+      } catch (error) {
+        console.log("Error at Customers.jsx", error);
+      }
+    };
+    fetchStaffList();
+  }, []);
+
   return (
     <div>
       <div className="toptable">
-        <h1 style={{ "marginLeft": "30px" }}>Danh sách khách hàng</h1>
+        <h1 style={{ marginLeft: "30px" }}>Danh sách khách hàng</h1>
         <div className="topnav__right">
           <div className="topnav__right-item">
             <div className="topnav__search">
@@ -49,7 +62,7 @@ const Customers = () => {
                 limit="10"
                 headData={customerTableHead}
                 renderHead={(item, index) => renderHead(item, index)}
-                bodyData={customerList}
+                bodyData={dataCustomer}
                 renderBody={(item, index) => renderBody(item, index)}
               />
             </div>

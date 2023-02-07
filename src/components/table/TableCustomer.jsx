@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import "./table.css";
 
 const TableCustomer = (props) => {
-  const initDataShow =
-    props.limit && props.bodyData
-      ? props.bodyData.slice(0, Number(props.limit))
-      : props.bodyData;
+  const [dataShow, setDataShow] = useState([]);
 
-  const [dataShow, setDataShow] = useState(initDataShow);
+  useEffect(() => {
+    const initDataShow =
+      props.limit && props.bodyData
+        ? props.bodyData.slice(0, Number(props.limit))
+        : props.bodyData;
+    setDataShow(initDataShow);
+  }, [props.bodyData, props.limit]);
 
   let pages = 1;
 
@@ -48,16 +52,19 @@ const TableCustomer = (props) => {
               {dataShow.map((item, index) => (
                 <tbody key={index}>
                   <tr>
-                    <td>#{item.id}</td>
-                    <td>{item.name}</td>
-                    <td>{item.phone}</td>
-                    <td>{item.address}</td>
-                    <td>{item.email}</td>
+                    <td>#{item.customerId}</td>
                     <td>
-                      <input
-                        className="checkBoxStatus"
-                        type="checkbox"
-                      />
+                      {item.customerName === null ? "null" : item.customerName}
+                    </td>
+                    <td>
+                      {item.theAccount === null
+                        ? "null"
+                        : item.theAccount.phoneNumber}
+                    </td>
+                    <td>{item.address === null ? "null" : item.address}</td>
+                    <td>{item.email === null ? "null" : item.email}</td>
+                    <td>
+                      <input className="checkBoxStatus" type="checkbox" />
                     </td>
                   </tr>
                 </tbody>

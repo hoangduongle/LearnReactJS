@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import "./table.css";
 
 const TableStaff = (props) => {
-  const initDataShow =
-    props.limit && props.bodyData
-      ? props.bodyData.slice(0, Number(props.limit))
-      : props.bodyData;
+  const [dataShow, setDataShow] = useState([]);
 
-  const [dataShow, setDataShow] = useState(initDataShow);
+  useEffect(() => {
+    const initDataShow =
+      props.limit && props.bodyData
+        ? props.bodyData.slice(0, Number(props.limit))
+        : props.bodyData;
+    setDataShow(initDataShow);
+  }, [props.bodyData, props.limit]);
 
   let pages = 1;
 
@@ -17,6 +20,7 @@ const TableStaff = (props) => {
   if (props.limit !== undefined) {
     let page = Math.floor(props.bodyData.length / Number(props.limit));
     pages = props.bodyData.length % Number(props.limit) === 0 ? page : page + 1;
+
     range = [...Array(pages).keys()];
   }
 
@@ -24,8 +28,8 @@ const TableStaff = (props) => {
 
   const selectPage = (page) => {
     const start = Number(props.limit) * page;
-    const end = start + Number(props.limit);
 
+    const end = start + Number(props.limit);
     setDataShow(props.bodyData.slice(start, end));
 
     setCurrPage(page);
@@ -49,15 +53,15 @@ const TableStaff = (props) => {
               {dataShow.map((item, index) => (
                 <tbody key={index}>
                   <tr>
-                    <td>#{item.accountId}</td>
-                    <td>{item.name}</td>
-                    <td>{item.roleId}</td>
-                    {item.status ? (
+                    <td>#{item.staffId}</td>
+                    <td>{item.staffFullName}</td>
+                    <td>{item.theAccountForStaff.roleId}</td>
+                    {item.theAccountForStaff.status ? (
                       <td className="status green">Hoạt động</td>
                     ) : (
                       <td className="status red">Không hoạt động</td>
                     )}
-                    <td>{item.phoneNumber}</td>
+                    <td>{item.theAccountForStaff.phoneNumber}</td>
                     <td>
                       <Icon className="icon" icon="bx:show-alt" />
                       <Icon className="icon" icon="bx:bx-edit-alt" />

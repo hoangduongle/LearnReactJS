@@ -8,13 +8,13 @@ import Dropdown from "../dropdown/Dropdown";
 
 import notifications from "../../assets/JsonData/notification.json";
 
-import user_image from "../../assets/images/tuat.png";
 
 import user_menu from "../../assets/JsonData/user_menus.json";
 
 const curr_user = {
   display_name: "Tú PH",
-  image: user_image,
+  image:
+    "https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/320881319_1206837483523963_2616536678702255853_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=IeecMs_ndbsAX-75l-b&_nc_ht=scontent.fsgn5-8.fna&oh=00_AfA2JHqJ4neeezd5-nmM_2IEqKOFwSRXhbDW8qaGgO3Kdw&oe=63E6A2BE",
 };
 
 const renderNotificationItem = (item, index) => (

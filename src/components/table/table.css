@@ -79,18 +79,23 @@ td {
   margin-right: 10px;
 }
 
-td input {
+.checkBoxStatus {
   -webkit-appearance: none;
   appearance: none;
   width: 170px;
   padding-left: 40px;
   margin: 0;
   border-radius: 16px;
-  background: radial-gradient(circle 12px, rgba(96, 95, 95, 1) 100%, transparent calc(100% + 1px)) #ccc -65px;
+  background: radial-gradient(
+      circle 12px,
+      rgba(96, 95, 95, 1) 100%,
+      transparent calc(100% + 1px)
+    )
+    #ccc -65px;
   transition: 0.3s ease-in-out;
 }
 
-td input::before {
+.checkBoxStatus::before {
   content: "Ngưng hoạt động";
   font: bold 12px/32px Verdana;
   color: white;

@@ -1,8 +1,9 @@
-import React from "react";
-
+import React, { Fragment } from "react";
 import TableStaff from "../components/table/TableStaff";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import staffApi from "../api/staffApi";
+import AddStaff from "../components/add-staff/addStaff";
 
 const staffTableHead = [
   "Mã nhân viên",
@@ -28,27 +29,30 @@ const renderBody = (item, index) => (
 
 const Staffs = () => {
   const [dataStaff, setDataStaff] = useState([]);
+  const [popup, setPopup] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(
-        `http://tfsapiv1-env.eba-aagv3rp5.ap-southeast-1.elasticbeanstalk.com/api/accounts`
-      )
-      .then((res) => {
-        setDataStaff(res.data);
-      })
-      .catch((e) => {
-        console.log("Exception", e);
-      });
+    const fetchStaffList = async () => {
+      try {
+        const respone = await staffApi.getAll();
+        setDataStaff(respone);
+      } catch (error) {
+        console.log("Error at Staffs.jsx", error);
+      }
+    };
+    fetchStaffList();
   }, []);
 
   return (
     <div>
+      {popup ? <AddStaff /> : Fragment}
       <div className="toptable">
         <h1 style={{ marginLeft: "30px" }}>Danh sách nhân viên</h1>
         <div className="topnav__right">
           <div className="topnav__right-item">
-            <div className="button">Thêm nhân viên +</div>
+            <div className="button" onClick={() => setPopup(!popup)}>
+              Thêm nhân viên +
+            </div>
           </div>
           <div className="topnav__right-item">
             <div className="topnav__search">
